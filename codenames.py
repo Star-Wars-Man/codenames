@@ -5,7 +5,6 @@ def main():
     displayWinner()
 
 def createBoards():
-    word_board = []
     
     
 def setPlayers():
