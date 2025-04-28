@@ -1,3 +1,5 @@
+import json
+import random
 def main():
     boards = createBoards()
     color_board = boards[0]
@@ -8,9 +10,6 @@ def main():
     displayWinner()
 
 def createBoards():
-    import json
-    import random
-    
     with open("color_matrices.json", "r") as file:
         matrices = [json.loads(line) for line in file]
         
@@ -57,6 +56,7 @@ def checkIfGameOver(color_board, chosen_board, turn):
     return [False, turn]
 
 def gameLoop(color_board, word_board, chosen_board):
+    
     checkIfGameOver(color_board, chosen_board, turn)
 
 def displayWinner():
