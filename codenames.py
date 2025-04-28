@@ -4,7 +4,7 @@ def main():
     word_board = boards[1]
     chosen_board = boards[2]
     setPlayers()
-    gameLoop(color_board, word_board)
+    gameLoop(color_board, word_board, chosen_board)
     displayWinner()
 
 def createBoards():
@@ -31,8 +31,8 @@ def setPlayers():
 def checkIfGameOver(color_board, word_board):
     print("hi")
 
-def gameLoop(color_board, word_board):
-    checkIfGameOver(color_board, word_board)
+def gameLoop(color_board, word_board, chosen_board):
+    checkIfGameOver(color_board, word_board, chosen_board)
 
 def displayWinner():
     print("hi")
