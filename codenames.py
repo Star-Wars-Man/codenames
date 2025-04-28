@@ -2,6 +2,7 @@ def main():
     boards = createBoards()
     color_board = boards[0]
     word_board = boards[1]
+    chosen_board = boards[2]
     setPlayers()
     gameLoop(color_board, word_board)
     displayWinner()

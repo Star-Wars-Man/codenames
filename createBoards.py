@@ -14,4 +14,6 @@ def createBoards():
     
     matrix = [selected_words[i*5:(i+1)*5] for i in range(5)]
     
-    return [chosen_matrix, matrix]
+    chosen_board = [["n","n","n","n","n"],["n","n","n","n","n"],["n","n","n","n","n"],["n","n","n","n","n"],["n","n","n","n","n"]]
+    
+    return [chosen_matrix, matrix, chosen_board]
