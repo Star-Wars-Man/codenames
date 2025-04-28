@@ -23,13 +23,13 @@ def createBoards():
     return [chosen_matrix, matrix]
     
 def setPlayers():
-    
+    print("hi")
 
 def checkIfGameOver():
-    
+    print("hi")
 
 def gameLoop():
     checkIfGameOver()
 
 def displayWinner():
-    
+    print("hi")
