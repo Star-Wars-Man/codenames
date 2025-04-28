@@ -1,7 +1,9 @@
 def main():
-    createBoards()
+    boards = createBoards()
+    color_board = boards[0]
+    word_board = boards[1]
     setPlayers()
-    gameLoop()
+    gameLoop(color_board, word_board)
     displayWinner()
 
 def createBoards():
@@ -25,11 +27,11 @@ def createBoards():
 def setPlayers():
     print("hi")
 
-def checkIfGameOver():
+def checkIfGameOver(color_board, word_board):
     print("hi")
 
-def gameLoop():
-    checkIfGameOver()
+def gameLoop(color_board, word_board):
+    checkIfGameOver(color_board, word_board)
 
 def displayWinner():
     print("hi")
