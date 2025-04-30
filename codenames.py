@@ -6,8 +6,8 @@ def main():
     word_board = boards[1]
     chosen_board = boards[2]
     firstPlayer = setPlayers(color_board)
-    gameLoop(color_board, word_board, chosen_board, firstPlayer)
-    displayWinner()
+    winner = gameLoop(color_board, word_board, chosen_board, firstPlayer)
+    displayWinner(winner)
 
 def createBoards():
     with open("color_matrices.json", "r") as file:
