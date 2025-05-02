@@ -1,5 +1,7 @@
 import json
 import random
+import os
+
 def main():
     boards = createBoards()
     color_board = boards[0]
@@ -10,19 +12,21 @@ def main():
     displayWinner(winner)
 
 def createBoards():
-    with open("color_matrices.json", "r") as file:
+    with open("/Users/26olsenjacb/Desktop/colors.json", "r") as file:
         matrices = [json.loads(line) for line in file]
         
     chosen_matrix = random.choice(matrices)
     
-    with open("words.txt", "r") as file:
+    with open("/Users/26olsenjacb/Desktop/words.txt", "r") as file:
         all_words = [line.strip() for line in file if line.strip()]
         
     selected_words = random.sample(all_words, 25)
     
     matrix = [selected_words[i*5:(i+1)*5] for i in range(5)]
     
-    return [chosen_matrix, matrix]
+    chosen_board = [["n","n","n","n","n"],["n","n","n","n","n"],["n","n","n","n","n"],["n","n","n","n","n"],["n","n","n","n","n"]]
+    
+    return [chosen_matrix, matrix, chosen_board]
     
 def setPlayers(color_board):
     print('Players 1 and 3 are Red Team, Players 2 and 4 are Blue Team')
@@ -78,8 +82,37 @@ def displayBoards(color_board, word_board, player_type):
         print()
 
 def gameLoop(color_board, word_board, chosen_board, firstPlayer):
-    displayBoards(color_board, word_board, player_type)
-    checkIfGameOver(color_board, chosen_board, turn)
+   
+    if firstPlayer == "red":
+        next_team = "blue"
+    else:
+        next_team = "red"
+    print(firstPlayer + " Team is going, guessers leave")
+    displayBoards(color_board, word_board, 'c')
+    clue = input('enter one word clue: ')
+    numOfClues = int(input('number applying to it: '))
+    os.system('clear')
+    for i in range(numOfClues):
+        print(firstPlayer + ' Guessers turn')
+        print("your clue is " + clue)
+        print("you have " + str(numOfClues) + " guesses")
+        displayBoards(color_board, word_board, 'g') 
+        clueR = int(input('enter row of guess (starts at 0 ends at 4)'))
+        clueC = int(input('enter column of guess (starts at 0 ends at 4)'))
+        chosen_board[clueR][clueC] = 'y'
+        if color_board[clueR][clueC] == firstPlayer:
+            os.system('clear')
+            print('Correct guess')
+        else:
+            os.system('clear')
+            print('Wrong guess')
+            break
+    over = checkIfGameOver(color_board, chosen_board, firstPlayer)
+    if over[0]:
+        
+        return over[1]
+    else:
+        gameLoop(color_board, word_board, chosen_board, next_team)
 
 def displayWinner(winner):
     RED = "\033[91m"
@@ -105,3 +138,5 @@ def displayWinner(winner):
         print(f"{LINE}{RESET}\n")
     else:
         print(center("❗ Invalid winner specified."))
+        print(center(winner))
+main()
